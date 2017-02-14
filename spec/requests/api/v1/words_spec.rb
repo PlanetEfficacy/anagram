@@ -7,8 +7,9 @@ RSpec.describe "Words API", type: :request do
 
     expect(response).to be_success
     expect(words.length).to eq(3)
-    expect(words.first['word']).to eq('read')
-    expect(words.second['word']).to eq('dear')
-    expect(words.third['word']).to eq('dare')
+    
+    expect(words.first['value']).to eq('read')
+    expect(words.second['value']).to eq('dear')
+    expect(words.third['value']).to eq('dare')
   end
 end
