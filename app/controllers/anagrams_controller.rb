@@ -1,4 +1,4 @@
-class Api::V1::AnagramsController < ApplicationController
+class AnagramsController < ApplicationController
   def show
     @anagrams = { anagrams: anagrams }
     render json: @anagrams

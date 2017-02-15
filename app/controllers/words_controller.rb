@@ -1,9 +1,9 @@
-class Api::V1::WordsController < ApplicationController
+class WordsController < ApplicationController
   def create
     @words = Word.create(words)
     render json: @words
   end
-  
+
   private
 
   def words

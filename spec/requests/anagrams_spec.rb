@@ -1,13 +1,13 @@
 require "rails_helper"
 
 RSpec.describe "Anagrams API", type: :request do
-  context "get to api/v1/anagrams" do
+  context "get to anagrams" do
     it 'get anagrams' do
       create :word, value: 'dear'
       create :word, value: 'dare'
       create :word, value: 'read'
 
-      get '/api/v1/anagrams/read.json'
+      get '/anagrams/read.json'
       result = JSON.parse(response.body)['anagrams']
 
       expect(response).to be_success
@@ -18,13 +18,13 @@ RSpec.describe "Anagrams API", type: :request do
     end
   end
 
-  context "get to api/v1/anagrams?limit=N" do
+  context "get to anagrams?limit=N" do
     it "gets anagrams with given limit" do
       create :word, value: 'dear'
       create :word, value: 'dare'
       create :word, value: 'read'
 
-      get '/api/v1/anagrams/read.json?limit=1'
+      get '/anagrams/read.json?limit=1'
       result = JSON.parse(response.body)['anagrams']
 
       expect(response).to be_success
