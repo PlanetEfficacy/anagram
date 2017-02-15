@@ -4,6 +4,11 @@ class WordsController < ApplicationController
     render json: @words
   end
 
+  def destroy
+    Word.find_by(value: params[:id]).destroy
+    render status: :accepted
+  end
+
   private
 
   def words

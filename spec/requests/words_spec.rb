@@ -14,7 +14,10 @@ RSpec.describe "Words API", type: :request do
   end
 
   it "delets a word from words" do
-    # delete '/api/v1'
-
+    create :word, value: 'read'
+    delete '/words/read.json'
+    
+    expect(response).to be_success
+    expect(Word.count).to eq(0)
   end
 end
