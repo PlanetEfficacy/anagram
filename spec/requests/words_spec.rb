@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Words API", type: :request do
   it 'posts an array of words' do
-    post '/words', words: ["read", "dear", "dare"]
+    post '/words', params: { words: ["read", "dear", "dare"] }
 
     result = JSON.parse(response.body)
 
@@ -16,7 +16,15 @@ RSpec.describe "Words API", type: :request do
   it "delets a word from words" do
     create :word, value: 'read'
     delete '/words/read.json'
-    
+
+    expect(response).to be_success
+    expect(Word.count).to eq(0)
+  end
+
+  it "deletes all the words from words" do
+    create_list :random_word, 2
+    delete '/words.json'
+
     expect(response).to be_success
     expect(Word.count).to eq(0)
   end

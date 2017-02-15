@@ -9,6 +9,10 @@ class WordsController < ApplicationController
     render status: :accepted
   end
 
+  def destroy_all
+    Word.destroy_all
+  end
+
   private
 
   def words

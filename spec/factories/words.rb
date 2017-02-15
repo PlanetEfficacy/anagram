@@ -1,5 +1,9 @@
 FactoryGirl.define do
   factory :word do
-    value "MyString"
+    value 'pants'
+
+    factory :random_word do
+      value { Faker::Lorem.word }
+    end
   end
 end
