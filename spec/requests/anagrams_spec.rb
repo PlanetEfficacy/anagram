@@ -1,7 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "Anagrams API", type: :request do
-  context "get to anagrams" do
+RSpec.describe 'Anagrams API', type: :request do
+  context 'get to anagrams' do
     it 'get anagrams' do
       create :word, value: 'dear'
       create :word, value: 'dare'
@@ -18,8 +18,8 @@ RSpec.describe "Anagrams API", type: :request do
     end
   end
 
-  context "get to anagrams?limit=N" do
-    it "gets anagrams with given limit" do
+  context 'get to anagrams?limit=N' do
+    it 'gets anagrams with given limit' do
       create :word, value: 'dear'
       create :word, value: 'dare'
       create :word, value: 'read'
@@ -29,6 +29,20 @@ RSpec.describe "Anagrams API", type: :request do
 
       expect(response).to be_success
 
+      expect(result.length).to eq(1)
+      expect(result[0]).to eq('dear')
+    end
+  end
+
+  context 'get to anagrams?proper=false' do
+    it 'gets anagrams excluding proper nouns' do
+      create :word, value: 'dear'
+      create :word, value: 'Dare'
+
+      get '/anagrams/read.json?proper=false'
+      result = JSON.parse(response.body)['anagrams']
+
+      expect(response).to be_success
       expect(result.length).to eq(1)
       expect(result[0]).to eq('dear')
     end

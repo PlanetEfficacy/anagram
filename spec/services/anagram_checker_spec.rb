@@ -5,9 +5,11 @@ describe AnagramChecker do
 
   context "#check" do
     it "returns true when anagrams are compared" do
-      result = subject.check('dear')
+      result_1 = subject.check('dear')
+      result_2 = subject.check('Dare')
 
-      expect(result).to eq(true)
+      expect(result_1).to eq(true)
+      expect(result_2).to eq(true)
     end
 
     it "returns false when non-anagrams are compared" do

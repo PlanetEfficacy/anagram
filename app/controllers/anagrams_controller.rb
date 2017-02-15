@@ -15,6 +15,10 @@ class AnagramsController < ApplicationController
   end
 
   def anagram_finder
-    AnagramFinder.new(params[:id])
+    AnagramFinder.new(params[:id], exclude_proper_nouns: scoped?)
+  end
+
+  def scoped?
+    params[:proper] == 'false'
   end
 end

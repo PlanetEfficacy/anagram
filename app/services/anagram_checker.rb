@@ -21,11 +21,11 @@ class AnagramChecker
     end
 
     def word_letters
-      word.split('').sort
+      word.downcase.split('').sort
     end
 
     def comparison_letters
-      comparison.split('').sort
+      comparison.downcase.split('').sort
     end
 
     def different_words?

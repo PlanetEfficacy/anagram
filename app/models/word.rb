@@ -4,6 +4,5 @@ class Word < ApplicationRecord
 
   def self.exclude_proper_nouns
     where("ASCII(left(value, 1)) between ASCII('a') and ASCII('z')")
-
   end
 end
