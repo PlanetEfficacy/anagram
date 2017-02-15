@@ -7,11 +7,12 @@ RSpec.describe "Anagrams API", type: :request do
     create :word, value: 'read'
 
     get '/api/v1/anagrams/read.json'
-    result = JSON.parse(response.body)
+    result = JSON.parse(response.body)['anagrams']
 
     expect(response).to be_success
+
     expect(result.length).to eq(2)
-    expect(result['anagrams'][0]).to eq('dear')
-    expect(result['anagrams'][1]).to eq('dare')
+    expect(result[0]).to eq('dear')
+    expect(result[1]).to eq('dare')
   end
 end
