@@ -22,7 +22,8 @@ RSpec.describe "Words API", type: :request do
   end
 
   it "deletes all the words from words" do
-    create_list :random_word, 2
+    create :word, value: 'read'
+    create :word, value: 'dear'
     delete '/words.json'
 
     expect(response).to be_success

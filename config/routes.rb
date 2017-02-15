@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     delete :index, on: :collection, action: :destroy_all
   end
 
+  get 'word-count', to: 'word_count#index', as: :word_count
+
 end

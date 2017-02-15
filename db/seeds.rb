@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+class DictionaryLoader
+  def self.run
+    File.open("./data/dictionary.txt", "r").readlines.each do |word|
+      new_word = Word.create(value: word.chomp)
+      puts "#{new_word.value}"
+    end
+  end
+end
+
+DictionaryLoader.run
