@@ -1,50 +1,38 @@
 require 'rails_helper'
 
-RSpec.describe 'Anagrams API', type: :request do
+describe 'Anagrams API', type: :request do
+  let(:anagram_finder) { double }
+
   context 'get to anagrams' do
     it 'get anagrams' do
-      create :word, value: 'dear'
-      create :word, value: 'dare'
-      create :word, value: 'read'
+      allow(AnagramFinder).to receive(:new).with('read', exclude_proper_nouns: false).and_return(anagram_finder)
+      expect(anagram_finder).to receive(:find)
 
       get '/anagrams/read.json'
-      result = JSON.parse(response.body)['anagrams']
 
       expect(response).to be_success
-
-      expect(result.length).to eq(2)
-      expect(result[0]).to eq('dear')
-      expect(result[1]).to eq('dare')
     end
   end
 
   context 'get to anagrams?limit=N' do
     it 'gets anagrams with given limit' do
-      create :word, value: 'dear'
-      create :word, value: 'dare'
-      create :word, value: 'read'
+      allow(AnagramFinder).to receive(:new).with('read', exclude_proper_nouns: false).and_return(anagram_finder)
+      expect(anagram_finder).to receive(:find).with(1)
 
       get '/anagrams/read.json?limit=1'
-      result = JSON.parse(response.body)['anagrams']
 
       expect(response).to be_success
-
-      expect(result.length).to eq(1)
-      expect(result[0]).to eq('dear')
     end
   end
 
   context 'get to anagrams?proper=false' do
     it 'gets anagrams excluding proper nouns' do
-      create :word, value: 'dear'
-      create :word, value: 'Dare'
+      allow(AnagramFinder).to receive(:new).with('read', exclude_proper_nouns: true).and_return(anagram_finder)
+      expect(anagram_finder).to receive(:find)
 
       get '/anagrams/read.json?proper=false'
-      result = JSON.parse(response.body)['anagrams']
 
       expect(response).to be_success
-      expect(result.length).to eq(1)
-      expect(result[0]).to eq('dear')
     end
   end
 end

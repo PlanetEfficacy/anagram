@@ -1,5 +1,10 @@
 class WordCounter
-  def self.run
+  attr_reader :scope
+  def initialize(scope={})
+    @scope = scope
+  end
+
+  def run
     {
       min:      min,
       max:      max,
@@ -10,27 +15,31 @@ class WordCounter
 
   private
 
-  def self.min
-    Word.pluck("min(length(value))").first
+  def min
+    word.pluck("min(length(value))").first
   end
 
-  def self.max
-    Word.pluck("max(length(value))").first
+  def max
+    word.pluck("max(length(value))").first
   end
 
-  def self.median
+  def median
     nerd.median
   end
 
-  def self.average
+  def average
     nerd.average
   end
 
-  def self.word_lengths
-    Word.pluck("length(value)")
+  def word_lengths
+    word.pluck("length(value)")
   end
 
-  def self.nerd
+  def nerd
     MathNerd.new(word_lengths)
+  end
+
+  def word
+    scope[:exclude_proper_nouns] ? Word.exclude_proper_nouns : Word
   end
 end

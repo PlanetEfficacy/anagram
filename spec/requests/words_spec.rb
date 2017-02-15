@@ -13,7 +13,7 @@ RSpec.describe "Words API", type: :request do
     expect(result.third['value']).to eq('dare')
   end
 
-  it "delets a word from words" do
+  it "deletes a word from words" do
     create :word, value: 'read'
     delete '/words/read.json'
 
