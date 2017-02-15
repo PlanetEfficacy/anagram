@@ -4,7 +4,7 @@ class AnagramFinder
     @checker = AnagramChecker.new(word)
   end
 
-  def find
-    Word.pluck(:value).select { |value| checker.check(value) }
+  def find(n=Word.count)
+    Word.pluck(:value).select { |value| checker.check(value) }.first(n)
   end
 end
