@@ -12,6 +12,10 @@ class Word < ApplicationRecord
     where(alphabetize: scope_handler(scope)).pluck(:value)
   end
 
+  def self.group_anagrams
+    group(:alphabetize).order('count_id desc').count('id')
+  end
+
   private
 
   def sort_value!
@@ -19,12 +23,8 @@ class Word < ApplicationRecord
     self.save!
   end
 
-  def self.anagram_count
-    group(:alphabetize).order('count_id desc').count('id')
-  end
-
   def self.anagram_count_scoped
-    exclude_proper_nouns.anagram_count
+    exclude_proper_nouns.group_anagrams
   end
 
   def self.scope_handler(scope)
@@ -36,7 +36,7 @@ class Word < ApplicationRecord
   end
 
   def self.unscoped_anagrams
-    top_anagrams(anagram_count)
+    top_anagrams(group_anagrams)
   end
 
   def self.top_anagrams(anagram_group)

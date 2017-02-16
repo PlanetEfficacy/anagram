@@ -6,16 +6,20 @@ class AnagramGrouper
 
   def get(size)
     @size = size
-    get_words_with_min_size
+    get_words_with_min_group_size
   end
 
   private
 
   def groups_min_size
-    word.group(:alphabetize).order('count_id desc').count('id').select { |k,v| v >= size }
+    word.group_anagrams.select { |alphabetize, count| count >= size }
   end
 
-  def get_words_with_min_size
-    groups_min_size.map { |alpha, count| word.where(alphabetize: alpha).pluck(:value) }
+  def get_words_with_min_group_size
+    groups_min_size.map { |alphabetize, count| get_anagrams(alphabetize) }
+  end
+
+  def get_anagrams(alphabetize)
+    word.where(alphabetize: alphabetize).pluck(:value)
   end
 end

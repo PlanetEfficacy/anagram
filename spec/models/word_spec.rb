@@ -33,6 +33,17 @@ describe Word, type: :model do
     end
   end
 
+  describe Word, '#group_anagrams' do
+    it 'groups words into a hash by anagram count' do
+      create :word, value: 'ab'
+      create :word, value: 'ba'
+
+      result = Word.group_anagrams
+
+      expect(result).to eq({ 'ab' => 2 })
+    end
+  end
+
   describe Word, '#most_anagrams' do
     before(:each) do
       create :word, value: 'abcd'
@@ -52,7 +63,7 @@ describe Word, type: :model do
     it 'returns an array of words that have the most anagrams scoped to exclude proper nounds' do
       expected = ['abcd', 'bcda']
       result = Word.most_anagrams(exclude_proper_nouns: true)
-      
+
       expect(result).to match(expected)
     end
 
