@@ -37,8 +37,26 @@ describe 'Anagrams API', type: :request do
   end
 
   describe 'delete to anagrams' do
-    it 'deletes the given word and all of its anagrams' do
-      
+    context 'unscoped' do
+      it 'deletes the given word and all of its anagrams' do
+        allow(AnagramFinder).to receive(:new).with('read', exclude_proper_nouns: false).and_return(anagram_finder)
+        expect(anagram_finder).to receive(:delete_all)
+
+        delete '/anagrams/read.json'
+
+        expect(response).to be_success
+      end
+    end
+
+    context 'scoped' do
+      it 'deletes the given word and all of its anagrams' do
+        allow(AnagramFinder).to receive(:new).with('read', exclude_proper_nouns: true).and_return(anagram_finder)
+        expect(anagram_finder).to receive(:delete_all)
+
+        delete '/anagrams/read.json?proper=false'
+
+        expect(response).to be_success
+      end
     end
   end
 end

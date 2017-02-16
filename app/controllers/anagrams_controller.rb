@@ -4,6 +4,11 @@ class AnagramsController < ApplicationController
     render json: @anagrams
   end
 
+  def destroy
+    anagram_finder.delete_all
+    render status: :no_content
+  end
+
   private
 
   def limit
