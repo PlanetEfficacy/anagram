@@ -3,6 +3,7 @@
 require 'json'
 require_relative 'anagram_client'
 require 'test/unit'
+require 'pry'
 
 # capture ARGV before TestUnit Autorunner clobbers it
 
@@ -29,6 +30,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_fetching_anagrams
+    # pend # delete me
 
     # fetch anagrams
     res = @client.get('/anagrams/read.json')
@@ -45,6 +47,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_fetching_anagrams_with_limit
+    # pend # delete me
 
     # fetch anagrams with limit
     res = @client.get('/anagrams/read.json', 'limit=1')
@@ -57,7 +60,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_fetch_for_word_with_no_anagrams
-
+    # pend # delete me
 
     # fetch anagrams with limit
     res = @client.get('/anagrams/zyxwv.json')
@@ -70,7 +73,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_all_words
-
+    # pend # delete me
 
     res = @client.delete('/words.json')
 
@@ -87,7 +90,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_all_words_multiple_times
-
+    # pend # delete me
 
     3.times do
       res = @client.delete('/words.json')
@@ -106,6 +109,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_single_word
+    # pend # delete me
 
     # delete the word
     res = @client.delete('/words/dear.json')

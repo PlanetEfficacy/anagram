@@ -1,7 +1,7 @@
 class AnagramsController < ApplicationController
   def show
     @anagrams = { anagrams: anagrams }
-    render json: @anagrams
+    render json: @anagrams, status: :ok
   end
 
   def destroy
@@ -20,6 +20,10 @@ class AnagramsController < ApplicationController
   end
 
   def anagram_finder
-    AnagramFinder.new(params[:id], exclude_proper_nouns: scoped?)
+    AnagramFinder.new(word, exclude_proper_nouns: scoped?)
+  end
+
+  def word
+    Word.find_or_create_by(value: params[:id])
   end
 end

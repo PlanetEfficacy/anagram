@@ -9,8 +9,10 @@ describe AnagramFinder do
   end
 
   let(:read) { create :word, value: 'read' }
+  let(:ibotta) { create :word, value: 'ibotta' }
   let(:subject) { AnagramFinder.new(read)}
   let(:scoped_subject) {  AnagramFinder.new(read, exclude_proper_nouns: true) }
+  let(:no_anagram_subject) { AnagramFinder.new(ibotta) }
 
   describe AnagramFinder, '#find(N)' do
     context 'no arguments provided' do
@@ -42,6 +44,14 @@ describe AnagramFinder do
         result = scoped_subject.find(1)
 
         expect(result).to eq(['dear'])
+      end
+    end
+
+    context 'there are no anagrams for a given word' do
+      it 'returns an empty array' do
+        result = no_anagram_subject.find
+
+        expect(result).to eq([])
       end
     end
   end
