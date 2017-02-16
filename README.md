@@ -50,6 +50,7 @@ This project has 100% test coverage according to the SimpleCov gem. I followed a
 rspec
 ```
 A secondary test file, provided in the instructions for this project, can be run from the root of the project with the following command. The project must be running on localhost:3000 prior to running this command. Also, DO NOT run this test once you have seeded the database as one of the tests will check an endpoint that will delete the entire database.
+
 **Caution, do not run this command without commenting out the delete all test once you have seeded your database**
 ```{bash}
 ruby anagram_test.rb
