@@ -18,3 +18,6 @@
 
 # Ignore SimpleCov files
 coverage
+
+# Ignore instructions file
+instructions_README.md

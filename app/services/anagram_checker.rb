@@ -12,20 +12,8 @@ class AnagramChecker
 
   private
 
-    def same_length?
-      word.length == comparison.length
-    end
-
     def same_letters?
-      word_letters == comparison_letters
-    end
-
-    def word_letters
-      word.downcase.split('').sort
-    end
-
-    def comparison_letters
-      comparison.downcase.split('').sort
+      word.alphabetize == comparison.alphabetize
     end
 
     def different_words?
@@ -33,7 +21,7 @@ class AnagramChecker
     end
 
     def is_anagram?
-      same_length? && same_letters? && different_words?
+      same_letters? && different_words?
     end
 
 end

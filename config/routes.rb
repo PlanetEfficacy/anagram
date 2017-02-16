@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
 
   get 'word-count', to: 'word_count#index', as: :word_count
+  get 'most-anagrams', to: 'most_anagrams#index', as: :most_anagrams
 
 end

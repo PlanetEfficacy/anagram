@@ -9,7 +9,7 @@ class DictionaryLoader
   def self.run
     File.open("./data/dictionary.txt", "r").readlines.each do |word|
       new_word = Word.create(value: word.chomp)
-      puts "#{new_word.value}"
+      puts "#{new_word.value} - #{new_word.alphabetize}"
     end
   end
 end

@@ -8,8 +8,9 @@ describe AnagramFinder do
     create :word, value: 'pant'
   end
 
-  let(:subject) { AnagramFinder.new('read')}
-  let(:scoped_subject) {  AnagramFinder.new('read', exclude_proper_nouns: true) }
+  let(:read) { create :word, value: 'read' }
+  let(:subject) { AnagramFinder.new(read)}
+  let(:scoped_subject) {  AnagramFinder.new(read, exclude_proper_nouns: true) }
 
   context "#find" do
     it "returns all existing anagrams from the words table" do
