@@ -10,6 +10,10 @@ class AnagramFinder
     word.where("alphabetize=? AND NOT value=?", alphabetize, value).limit(n).pluck(:value)
   end
 
+  def delete_all
+    word.where(value: find.push(value)).delete_all
+  end
+
   private
 
   def word

@@ -35,4 +35,10 @@ describe 'Anagrams API', type: :request do
       expect(response).to be_success
     end
   end
+
+  describe 'delete to anagrams' do
+    it 'deletes the given word and all of its anagrams' do
+      
+    end
+  end
 end
