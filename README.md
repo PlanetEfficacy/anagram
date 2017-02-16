@@ -216,3 +216,11 @@ and returns:
 ```
 HTTP/1.1 204 No Content
 ```
+# Notes
+If I was to continue developing this project, I might consider:
+  - Using raw sql to create the alphabetize attribute instead of the after_create method I have implemented in the word.rb model.
+  - Adding word length limits / maximums in each query. For example find all anagrams of words with length 10.
+
+# Thank You
+
+Thank you very much for your time and consideration.

@@ -73,7 +73,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_all_words
-    # pend # delete me
+    pend # delete me
 
     res = @client.delete('/words.json')
 
@@ -90,7 +90,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_all_words_multiple_times
-    # pend # delete me
+    pend # delete me
 
     3.times do
       res = @client.delete('/words.json')
@@ -109,7 +109,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_single_word
-    # pend # delete me
+    pend # delete me
 
     # delete the word
     res = @client.delete('/words/dear.json')
