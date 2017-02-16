@@ -2,11 +2,11 @@ class AnagramChecker
   attr_reader :word, :comparison
 
   def initialize(word)
-    @word = word
+    @word = Word.find_or_create_by(value: word)
   end
 
   def check(comparison)
-    @comparison = comparison
+    @comparison = Word.find_or_create_by(value: comparison)
     is_anagram?
   end
 
