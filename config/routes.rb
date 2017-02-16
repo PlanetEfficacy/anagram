@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     delete :index, on: :collection, action: :destroy_all
   end
 
-  get 'word-count', to: 'word_count#index', as: :word_count
-  get 'most-anagrams', to: 'most_anagrams#index', as: :most_anagrams
-  get 'check-anagrams', to: 'check_anagrams#index', as: :check_anagrams
+  get 'word-count',      to: 'word_count#index',      as: :word_count
+  get 'most-anagrams',   to: 'most_anagrams#index',   as: :most_anagrams
+  get 'check-anagrams',  to: 'check_anagrams#index',  as: :check_anagrams
+  get 'group-anagrams',  to: 'group_anagrams#index',  as: :group_anagrams
 
 end
