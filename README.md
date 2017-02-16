@@ -39,6 +39,8 @@ Running the seed file takes a while. The time comes from loading each word as we
   3. joining the split word back together
 
 It is more performant to query the database for anagrams once we include both the word's value (text) and its alphabetized form in our word record since the heavy lifting part of the anagram algorithm is done up front upon running the db seed and upon the subsequent creation of words.
+
+Seed your database with the following command:
 ```{bash}
 rake db:seed
 ```
