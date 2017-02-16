@@ -13,6 +13,7 @@ describe WordCounter, "#run" do
   it "returns a hash with min/max/median/average word lengths" do
     result = subject.run
 
+    expect(result[:count]).to eq(3)
     expect(result[:min]).to eq(1)
     expect(result[:max]).to eq(6)
     expect(result[:median]).to eq(3.0)
@@ -24,6 +25,7 @@ describe WordCounter, "#run" do
 
     result = scoped_subject.run
 
+    expect(result[:count]).to eq(3)
     expect(result[:min]).to eq(1)
     expect(result[:max]).to eq(6)
     expect(result[:median]).to eq(3.0)

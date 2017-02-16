@@ -6,6 +6,7 @@ class WordCounter
 
   def run
     {
+      count:    count,
       min:      min,
       max:      max,
       median:   median,
@@ -14,6 +15,10 @@ class WordCounter
   end
 
   private
+
+  def count
+    word.count
+  end
 
   def min
     word.pluck("min(length(value))").first
