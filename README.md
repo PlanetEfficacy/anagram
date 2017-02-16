@@ -33,9 +33,10 @@ end
 As per the project instructions:
 `Ingesting the file doesn’t need to be fast, and you can store as much data in memory as you like.`
 Running the seed file takes a while. The time comes from loading each word as well as its alphabetized form into the database. A word's alphabetized form is derived by:
-1. splitting the word by character
-2. sorting the characters alphabetically
-3. joining the split word back together
+
+  1. splitting the word by character
+  2. sorting the characters alphabetically
+  3. joining the split word back together
 
 It is more performant to query the database for anagrams once we include both the word's value (text) and its alphabetized form in our word record since the heavy lifting part of the anagram algorithm is done up front upon running the db seed and upon the subsequent creation of words.
 ```{bash}
